@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte avec Leaflet (Thème Blanc)</title>
+    <!-- Lien vers le fichier CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Div pour afficher la carte -->
+    <div id="map" style="height: 500px;"></div>
+
+    <!-- Lien vers le fichier JavaScript de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        // Créer la carte avec un point de vue initial
+        var map = L.map('map').setView([51.505, -0.09], 13); // Coordonnées de Londres
+
+        // Ajouter une couche de tuiles blanches (Positron de CartoDB)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &amp; <a href="https://carto.com/attributions">CartoDB</a>',
+            minZoom: 0,
+            maxZoom: 22
+        }).addTo(map);
+
+        // Ajouter un marqueur
+        L.marker([51.505, -0.09]).addTo(map)
+            .bindPopup('Carte avec un thème blanc (Positron)!')
+            .openPopup();
+    </script>
+</body>
+</html>
